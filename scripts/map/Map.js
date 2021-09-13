@@ -1,28 +1,3 @@
-// ==================to import to main==================
-
-// const showParkList = () => {
-//   //Get a reference to the location on the DOM where the list will display
-//   const parkElement = document.querySelector(".parkList");
-//   getParks().then((allParks) => {
-//     parkElement.innerHTML = ParkList(allParks.data);
-//   });
-// };
-
-// // showParkList();
-
-const parkElement = document.querySelector(".parkList");
-const applicationElement = document.getElementById("container");
-
-applicationElement.addEventListener("click", (event) => {
-  if (event.target.id.length === 2) {
-    return getParks(event.target.id).then((park) => {
-      parkElement.innerHTML = ParkList(park.data);
-    });
-  }
-});
-
-// ==================================================================
-
 export const USMap = () => {
   return `<div class="map_wrapper">
                 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
