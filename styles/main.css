@@ -13,23 +13,10 @@ textarea {
   line-height: 1.5;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: "Patua One", serif;
-  letter-spacing: 2px;
-}
+/* ---------------------map styling-------------------------- */
 
 #us-map {
-  order: 1;
-  display: block;
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 30vw;
+  width: 60vw;
   height: auto;
 }
 path:hover,
@@ -56,4 +43,20 @@ circle:hover {
   border-radius: 5px;
   padding: 5px;
   font-family: arial;
+}
+
+.map_wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.state_select_h2 {
+  text-align: center;
+}
+/* ====================================================== */
+
+#parkDropdown {
+  width: 20vw;
 }

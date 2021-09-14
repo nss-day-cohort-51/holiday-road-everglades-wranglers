@@ -2,10 +2,12 @@ import { USMap } from "./map/Map.js";
 import { getParks } from "./parks/ParkDataManager.js";
 import { ParkSelectorCard } from "./SelectorCards.js";
 
-// ==================to import to main==================
+// ===============================================================================
 
 const parkElement = document.querySelector(".tripSelection");
 const applicationElement = document.querySelector(".mapSection");
+
+// =============================event listeners===================================
 
 applicationElement.addEventListener("click", (event) => {
   if (event.target.id.length === 2) {
@@ -15,7 +17,7 @@ applicationElement.addEventListener("click", (event) => {
   }
 });
 
-// ===========================map function=======================================
+// ===========================map function========================================
 
 applicationElement.innerHTML = USMap();
 
