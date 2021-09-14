@@ -12,6 +12,7 @@ const applicationElement = document.querySelector(".mapSection");
 // =============================event listeners===================================
 
 applicationElement.addEventListener("click", (event) => {
+  parkElement.innerHTML = ""
   if (event.target.id.length === 2) {
      getParks(event.target.id).then((park) => {
       parkElement.innerHTML += ParkSelectorCard(park.data);
