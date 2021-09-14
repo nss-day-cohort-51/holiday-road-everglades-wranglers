@@ -2,8 +2,6 @@ import { USMap } from "./map/Map.js";
 import { getParks } from "./parks/ParkDataManager.js";
 import { ParkSelectorCard } from "./SelectorCards.js";
 
-ParkSelectorCard();
-
 // ==================to import to main==================
 
 const parkElement = document.querySelector(".tripSelection");

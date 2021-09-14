@@ -1,9 +1,6 @@
-import { Park } from "./parks/Park.js";
-
 export const ParkSelectorCard = (parkArray) => {
   let output = `<section class="parkSelector"><select name="parks" id="parkDropdown"><option value="default">Select Park</option>`;
-  for (const park in parkArray) {
-    debugger;
+  for (const park of parkArray) {
     output += `<option value="${park.fullName}">${park.fullName}</option>`;
   }
   output += `</select></section>`;
@@ -12,7 +9,7 @@ export const ParkSelectorCard = (parkArray) => {
 
 export const BizSelectorCard = (bizArray) => {
   let output = `<section class="bizSelector"><select name="bizarraries" id="bizDropdown"><option value="default">Select Biz</option>`;
-  for (const biz in bizArray) {
+  for (const biz of bizArray) {
     output += `<option value="${biz}">${biz}</option>`;
   }
   output += `</select></section>`;
@@ -21,7 +18,7 @@ export const BizSelectorCard = (bizArray) => {
 
 export const EaterySelectorCard = (eateryArray) => {
   let output = `<section class="eaterySelector"><select name="eateries" id="eateryDropdown"><option value="default">Select Eatery</option>`;
-  for (const eatery in eateryArray) {
+  for (const eatery of eateryArray) {
     output += `<option value="${eatery}">${eatery}</option>`;
   }
   output += `</select></section>`;
