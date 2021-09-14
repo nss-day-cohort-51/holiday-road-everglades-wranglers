@@ -1,6 +1,8 @@
 import { USMap } from "./map/Map.js";
 import { getParks } from "./parks/ParkDataManager.js";
-import { ParkSelectorCard } from "./SelectorCards.js";
+import { getAttractions } from "./attractions/AttractionDataManager.js";
+import { ParkSelectorCard, BizSelectorCard, EaterySelectorCard } from "./SelectorCards.js";
+import { ParkPreviewCard, BizPreviewCard, EateryPreviewCard } from "./TripPreviewCards.js";
 
 // ===============================================================================
 
@@ -11,11 +13,22 @@ const applicationElement = document.querySelector(".mapSection");
 
 applicationElement.addEventListener("click", (event) => {
   if (event.target.id.length === 2) {
-    return getParks(event.target.id).then((park) => {
+    getParks(event.target.id).then((park) => {
       parkElement.innerHTML = ParkSelectorCard(park.data);
+      document.getElementById("parkDropdown").addEventListener('click', (event) => {
+        ShowParkPreview(event, park.data)
+      })
     });
   }
 });
+
+const ShowParkPreview = (event, data) => {
+  if (event.target.selectedIndex > 0) {
+    let parkName = event.target.options[event.target.selectedIndex].text
+    let parkImage = data[event.target.selectedIndex - 1].images[0].url
+    document.querySelector(".previewCards").innerHTML += ParkPreviewCard(parkName, parkImage)
+  }
+}
 
 // ===========================map function========================================
 
