@@ -16,7 +16,7 @@ export const callApi = () =>
 
             let allHtml = ""
 
-            const allData = data.list.slice(0,5)
+            const allData = data.list
             
             for(const date of allData)
 
