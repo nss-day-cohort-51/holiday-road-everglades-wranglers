@@ -21,12 +21,24 @@ textarea {
 }
 path:hover,
 circle:hover {
-  stroke: #002868 !important;
+  stroke: white !important;
   stroke-width: 2px;
   stroke-linejoin: round;
-  fill: #002868 !important;
+  fill: darkgray !important;
   cursor: pointer;
 }
+
+path {
+  cursor: pointer;
+  fill: grey;
+}
+.selected {
+  fill: #002868;
+  stroke: white;
+  stroke-width: 1px;
+  stroke-linejoin: round;
+}
+
 #path67 {
   fill: none !important;
   stroke: #a9a9a9 !important;
