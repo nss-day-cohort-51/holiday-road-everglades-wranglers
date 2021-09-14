@@ -2,8 +2,7 @@ import { Park } from "./parks/Park.js";
 
 export const ParkSelectorCard = (parkArray) => {
   let output = `<section class="parkSelector"><select name="parks" id="parkDropdown"><option value="default">Select Park</option>`;
-  for (const park in parkArray) {
-    debugger;
+  for (const park of parkArray) {
     output += `<option value="${park.fullName}">${park.fullName}</option>`;
   }
   output += `</select></section>`;
