@@ -45,3 +45,6 @@ if (ios) {
 }
 
 // =========================================================================
+import { callApi } from "./weather/weatherDisplay.js";
+
+callApi();
