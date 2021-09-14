@@ -1,8 +1,8 @@
 import { USMap } from "./map/Map.js";
 import { getParks } from "./parks/ParkDataManager.js";
-import { getAttractions } from "./attractions/AttractionDataManager.js";
-import { ParkSelectorCard, BizSelectorCard, EaterySelectorCard } from "./SelectorCards.js";
-import { ParkPreviewCard, BizPreviewCard, EateryPreviewCard } from "./TripPreviewCards.js";
+import { ParkSelectorCard,EaterySelectorCard,BizSelectorCard } from "./SelectorCards.js";
+import { getEateries } from "./eateries/EateryDataManager.js"
+import { getAttractions } from "./attractions/AttractionDataManager.js"
 
 // ===============================================================================
 
@@ -13,11 +13,14 @@ const applicationElement = document.querySelector(".mapSection");
 
 applicationElement.addEventListener("click", (event) => {
   if (event.target.id.length === 2) {
-    getParks(event.target.id).then((park) => {
-      parkElement.innerHTML = ParkSelectorCard(park.data);
-      document.getElementById("parkDropdown").addEventListener('click', (event) => {
-        ShowParkPreview(event, park.data)
-      })
+     getParks(event.target.id).then((park) => {
+      parkElement.innerHTML += ParkSelectorCard(park.data);
+    });
+     getEateries(event.target.id).then((eatery) => {
+      parkElement.innerHTML += EaterySelectorCard(eatery);
+    });
+    getAttractions(event.target.id).then((attractions) => {
+      parkElement.innerHTML += BizSelectorCard(attractions);
     });
   }
 });
