@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Comfortaa|Patua+One");
+@import url("https://fonts.googleapis.com/css2?family=Courgette&display=swap");
 
 /*Typography
 --------------------------------------------------------------*/
@@ -7,15 +8,32 @@ button,
 input,
 select,
 textarea {
-  color: #404040;
+  color: #002868;
   font-family: "Comfortaa", Arial, sans-serif;
   font-size: 14px;
   line-height: 1.5;
 }
 
+.header_wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+h1 {
+  font-family: "Courgette", cursive;
+  font-size: 4vw;
+}
+
+.HR_Logo {
+  width: 30vw;
+}
+
 /* ---------------------map styling-------------------------- */
 
 #us-map {
+  margin-top: 5vw;
   width: 60vw;
   height: auto;
 }
