@@ -109,7 +109,7 @@ path {
 
 select {
   appearance: none;
-  text-align: left;
+  text-align: center;
   margin: 0;
   font-family: inherit;
   font-size: 15px;
@@ -131,9 +131,5 @@ select {
   align-items: center;
   justify-content: space-evenly;
 
-
-}
-.parkSelector{
-width: auto;
 
 }
