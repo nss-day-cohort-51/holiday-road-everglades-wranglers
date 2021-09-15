@@ -1,5 +1,5 @@
 export const ParkPreviewCard = (parkName, image) => {
-    return `
+  return `
     <section class="parkPreview">
         <h3>${parkName}</h3>
         <img src="${image}" alt="parkImage" />
@@ -7,11 +7,18 @@ export const ParkPreviewCard = (parkName, image) => {
             <button id="editBtn_${parkName}">Edit</button>
             <button id="detailsBtn_${parkName}">Details</button>
         </section>
-    </section>`
-}
+    </section>`;
+};
+
+export const ParkDetailsCard = (parkDesc) => {
+  return `
+    <section class="parkDetails">
+        <p>${parkDesc}</p>
+    </section>`;
+};
 
 export const BizPreviewCard = (bizName, desc) => {
-    return `
+  return `
     <section class="bizPreview">
         <h3>${bizName}</h3>
         <p>${desc}</p>
@@ -19,11 +26,11 @@ export const BizPreviewCard = (bizName, desc) => {
             <button id="editBtn_${bizName}">Edit</button>
             <button id="detailsBtn_${bizName}">Details</button>
         </section>
-    </section>`
-}
+    </section>`;
+};
 
 export const EateryPreviewCard = (eateryName, desc) => {
-    return `
+  return `
     <section class="eateryPreview">
         <h3>${eateryName}</h3>
         <p>${desc}</p>
@@ -31,5 +38,5 @@ export const EateryPreviewCard = (eateryName, desc) => {
             <button id="editBtn_${eateryName}">Edit</button>
             <button id="detailsBtn_${eateryName}">Details</button>
         </section>
-    </section>`
-}
+    </section>`;
+};
