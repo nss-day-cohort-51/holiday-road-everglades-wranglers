@@ -1,7 +1,7 @@
 export const ParkSelectorCard = (parkArray) => {
   let output = `<section class="parkSelector"><select name="parks" id="parkDropdown"><option value="default">Select Park</option>`;
   for (const park of parkArray) {
-    output += `<option value="${park.fullName}">${park.fullName}</option>`;
+    output += `<option class="parkitem" value="${park.fullName}">${park.fullName}</option>`;
   }
   output += `</select></section>`;
   return output;

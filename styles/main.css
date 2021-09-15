@@ -107,3 +107,35 @@ path {
 .weather-Card h1 {
   color: white;
 }
+
+
+select {
+  appearance: none;
+  text-align: left;
+  margin: 0;
+  font-family: inherit;
+  font-size: 15px;
+  line-height: inherit;
+  border-radius:20px;
+ flex-wrap: wrap;
+  background:#cccccc;
+  border:0px;
+  outline:none;
+  width: 30ch;
+}
+
+
+
+.tripSelection {
+  padding-top: 200px;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: space-evenly;
+
+
+}
+.parkSelector{
+width: autoS;
+
+}
