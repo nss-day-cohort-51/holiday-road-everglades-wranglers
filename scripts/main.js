@@ -4,6 +4,7 @@ import { ParkSelectorCard,EaterySelectorCard,BizSelectorCard } from "./SelectorC
 import { getEateries } from "./eateries/EateryDataManager.js"
 import { getAttractions } from "./attractions/AttractionDataManager.js"
 import { ParkPreviewCard, BizPreviewCard, EateryPreviewCard } from "./TripPreviewCards.js";
+import { callApi } from "./weather/weatherDisplay.js";
 
 // ===============================================================================
 
@@ -35,6 +36,7 @@ applicationElement.addEventListener("click", (event) => {
 });
 
 document.getElementsByClassName("tripSelection")[0].addEventListener('click', function(event) {
+  
   if (event.target && event.target.className === "dropdown" && event.target.id.endsWith("Dropdown")) {
     if (event.target.selectedIndex > 0) {
       if (event.target.id === "parkDropdown") {
@@ -62,9 +64,12 @@ const ShowEateryPreview = (event, data) => {
 
 const ShowParkPreview = (event, data) => {
   let parkName = event.target.options[event.target.selectedIndex].text
+  let parkZipCode = data[event.target.selectedIndex - 1].addresses[0].postalCode
   let parkImage = data[event.target.selectedIndex - 1].images[0].url
   document.querySelector(".previewCards").innerHTML += ParkPreviewCard(parkName, parkImage)
-}
+  callApi(parkZipCode)
+}  
+
 
 // ===========================map function========================================
 
@@ -92,6 +97,6 @@ $(document)
   .mouseover();
 
 // =========================================================================
-import { callApi } from "./weather/weatherDisplay.js";
 
-callApi();
+
+
