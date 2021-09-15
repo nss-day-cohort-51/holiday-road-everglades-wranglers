@@ -4,13 +4,14 @@ import { ParkSelectorCard,EaterySelectorCard,BizSelectorCard } from "./SelectorC
 import { getEateries } from "./eateries/EateryDataManager.js"
 import { getAttractions } from "./attractions/AttractionDataManager.js"
 import { ParkPreviewCard, BizPreviewCard, EateryPreviewCard } from "./TripPreviewCards.js";
+import { callApi } from "./weather/weatherDisplay.js";
+import { addTrip } from "./apiDataManager.js";
 
-// ===============================================================================
+//#region event listeners
 
 const parkElement = document.querySelector(".tripSelection");
 const applicationElement = document.querySelector(".mapSection");
-
-// =============================event listeners===================================
+document.getElementById("saveTrip").disabled = true
 
 let parkData = null
 let bizData = null
@@ -44,6 +45,7 @@ document.getElementsByClassName("tripSelection")[0].addEventListener('click', fu
       } else if  (event.target.id === "eateryDropdown") {
         ShowEateryPreview(event, eateryData);
       }
+      checkSave();
     }
   }
 })
@@ -51,7 +53,7 @@ document.getElementsByClassName("tripSelection")[0].addEventListener('click', fu
 const ShowBizPreview = (event, data) => {
   let parkName = event.target.options[event.target.selectedIndex].text
   let parkImage = data[event.target.selectedIndex].description
-  document.querySelector(".previewCards").innerHTML += BizPreviewCard(parkName, parkImage)
+  document.querySelector(".previewCards").innerHTML += BizPreviewCard(parkName, parkImage) 
 }
 
 const ShowEateryPreview = (event, data) => {
@@ -64,9 +66,57 @@ const ShowParkPreview = (event, data) => {
   let parkName = event.target.options[event.target.selectedIndex].text
   let parkImage = data[event.target.selectedIndex - 1].images[0].url
   document.querySelector(".previewCards").innerHTML += ParkPreviewCard(parkName, parkImage)
+  callApi();
 }
 
-// ===========================map function========================================
+document.getElementById("saveTrip").addEventListener('click', function(event) {
+  if (event.target.disabled === false) {
+    let parksArray = []
+    let eateriesArray = []
+    let bizzarriesArray = []
+    let previewSection = document.getElementsByClassName("previewCards")[0]
+    for (let childSection of previewSection.childNodes) {
+      console.log(childSection.childNodes)
+      if (childSection.className == "eateryPreview") {
+        let eateryName = childSection.childNodes[1].innerHTML
+        let eateryDescription = childSection.childNodes[3].innerHTML
+        eateriesArray.push({
+          name: eateryName,
+          description: eateryDescription
+        })
+      } else if (childSection.className == "parkPreview") {
+        let parkName = childSection.childNodes[1].innerHTML
+        let parkImage = childSection.childNodes[3].src
+        parksArray.push({
+          name: parkName,
+          image: parkImage
+        })
+      } else if (childSection.className == "bizPreview") {
+        let bizName = childSection.childNodes[1].innerHTML
+        let bizDescription = childSection.childNodes[3].innerHTML
+        bizzarriesArray.push({
+          name: bizName,
+          description: bizDescription
+        })
+      }
+      addTrip({
+        parks: [
+          JSON.stringify(parksArray)
+        ]
+      })
+    }
+  }
+})
+
+const checkSave = () => {
+  if (document.querySelectorAll('.parkPreview').length > 0 && document.querySelectorAll('.bizPreview').length > 0 && document.querySelectorAll('.eateryPreview').length > 0) {
+    document.getElementById("saveTrip").disabled = false
+  }
+}
+
+//#endregion
+
+//#region mapfunction
 
 applicationElement.innerHTML = USMap();
 
@@ -91,7 +141,5 @@ $(document)
   })
   .mouseover();
 
-// =========================================================================
-import { callApi } from "./weather/weatherDisplay.js";
+//#endregion
 
-callApi();
