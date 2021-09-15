@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Comfortaa|Patua+One");
+@import url("https://fonts.googleapis.com/css2?family=Courgette&display=swap");
 
 /*Typography
 --------------------------------------------------------------*/
@@ -7,26 +8,55 @@ button,
 input,
 select,
 textarea {
-  color: #404040;
+  color: #002868;
   font-family: "Comfortaa", Arial, sans-serif;
   font-size: 14px;
   line-height: 1.5;
 }
 
+.header_wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+h1 {
+  font-family: "Courgette", cursive;
+  font-size: 4vw;
+}
+
+.HR_Logo {
+  width: 30vw;
+}
+
 /* ---------------------map styling-------------------------- */
 
 #us-map {
+  margin-top: 5vw;
   width: 60vw;
   height: auto;
 }
 path:hover,
 circle:hover {
-  stroke: #002868 !important;
+  stroke: white !important;
   stroke-width: 2px;
   stroke-linejoin: round;
-  fill: #002868 !important;
+  fill: darkgray !important;
   cursor: pointer;
 }
+
+path {
+  cursor: pointer;
+  fill: grey;
+}
+.selected {
+  fill: #002868;
+  stroke: white;
+  stroke-width: 1px;
+  stroke-linejoin: round;
+}
+
 #path67 {
   fill: none !important;
   stroke: #a9a9a9 !important;
@@ -61,26 +91,19 @@ circle:hover {
   width: 20vw;
 }
 
-
-.display
-{
+.display {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   width: 100%;
   margin: auto;
-
 }
 
-
-.weather-Card
-{
+.weather-Card {
   background: #e6aa8e;
   margin: 10px;
-  
 }
 
-.weather-Card h1
-{
+.weather-Card h1 {
   color: white;
 }
