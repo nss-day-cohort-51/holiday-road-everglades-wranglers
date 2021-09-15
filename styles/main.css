@@ -91,26 +91,19 @@ path {
   width: 20vw;
 }
 
-
-.display
-{
+.display {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   width: 100%;
   margin: auto;
-
 }
 
-
-.weather-Card
-{
+.weather-Card {
   background: #e6aa8e;
   margin: 10px;
-  
 }
 
-.weather-Card h1
-{
+.weather-Card h1 {
   color: white;
 }
