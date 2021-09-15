@@ -18,7 +18,7 @@ let bizData = null
 let eateryData = null
 
 applicationElement.addEventListener("click", (event) => {
-  parkElement.innerHTML = "<h2>select a park bizzarrie and eatery</h2>"
+  parkElement.innerHTML = ""
   if (event.target.id.length === 2) {
     getParks(event.target.id).then((park) => {
       parkElement.innerHTML += ParkSelectorCard(park.data); 
@@ -36,7 +36,6 @@ applicationElement.addEventListener("click", (event) => {
 });
 
 document.getElementsByClassName("tripSelection")[0].addEventListener('click', function(event) {
-  
   if (event.target && event.target.className === "dropdown" && event.target.id.endsWith("Dropdown")) {
     if (event.target.selectedIndex > 0) {
       if (event.target.id === "parkDropdown") {
