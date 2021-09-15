@@ -10,7 +10,7 @@ export const ParkSelectorCard = (parkArray) => {
 export const BizSelectorCard = (bizArray) => {
   let output = `<section class="bizSelector"><select name="bizarraries" id="bizDropdown"><option value="default">Select Biz</option>`;
   for (const biz of bizArray) {
-    output += `<option value="${biz}">${biz}</option>`;
+    output += `<option value="${biz.name}">${biz.name}</option>`;
   }
   output += `</select></section>`;
   return output;
@@ -19,7 +19,7 @@ export const BizSelectorCard = (bizArray) => {
 export const EaterySelectorCard = (eateryArray) => {
   let output = `<section class="eaterySelector"><select name="eateries" id="eateryDropdown"><option value="default">Select Eatery</option>`;
   for (const eatery of eateryArray) {
-    output += `<option value="${eatery}">${eatery}</option>`;
+    output += `<option value="${eatery.businessName}">${eatery.businessName}</option>`;
   }
   output += `</select></section>`;
   return output;
