@@ -5,25 +5,19 @@ import { getEateries } from "./eateries/EateryDataManager.js";
 import { getAttractions } from "./attractions/AttractionDataManager.js";
 import {ParkPreviewCard,BizPreviewCard,EateryPreviewCard,TripPreviewCard} from "./TripPreviewCards.js";
 import { callApi } from "./weather/weatherDisplay.js";
-<<<<<<< HEAD
 import { EateryWheelSelectorCard } from "./SelectorCards.js";
 import { wheelchairFilter } from "./SelectorCards.js";
-=======
 import { addTrip, getTrips } from "./apiDataManager.js";
->>>>>>> af1c807ef9f58596c0726cae9a18c1a3d71b8bf5
 
 //#region event listeners
 
 const parkElement = document.querySelector(".tripSelection");
 const applicationElement = document.querySelector(".mapSection");
-<<<<<<< HEAD
 const wheel = document.querySelector('.filterWheel')
 const eateriesWheel = document.querySelector('.eateriesWheel')
 wheel.innerHTML = wheelchairFilter()
 // =============================event listeners===================================
-=======
 document.getElementById("saveTrip").disabled = true
->>>>>>> ae00f185f99f04b79ed5b6295e2743eb604f4b25
 
 let parkData = null;
 let bizData = null;
