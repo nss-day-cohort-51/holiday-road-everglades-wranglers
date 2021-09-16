@@ -12,6 +12,8 @@ import {
   BizPreviewCard,
   EateryPreviewCard,
   ParkDetailsCard,
+  EateryDetailsCard,
+  BizDetailsCard,
 } from "./TripPreviewCards.js";
 import { callApi } from "./weather/weatherDisplay.js";
 
@@ -19,7 +21,6 @@ import { callApi } from "./weather/weatherDisplay.js";
 
 const parkElement = document.querySelector(".tripSelection");
 const applicationElement = document.querySelector(".mapSection");
-const previewElement = document.querySelector(".tripPreview");
 
 // =============================event listeners===================================
 
@@ -59,8 +60,10 @@ document
           ShowParkDetails(event, parkData);
         } else if (event.target.id === "bizDropdown") {
           ShowBizPreview(event, bizData);
+          ShowBizDetails(event, bizData);
         } else if (event.target.id === "eateryDropdown") {
           ShowEateryPreview(event, eateryData);
+          ShowEateryDetails(event, eateryData);
         }
       }
     }
@@ -71,32 +74,79 @@ document
   .addEventListener("click", function (event) {
     if (
       event.target.className === "parkDetailsBtn" &&
-      document.querySelector(".previewDetails").style.visibility === "hidden"
+      document.querySelector(".parkDetail").style.visibility === "hidden"
     ) {
-      document.querySelector(".previewDetails").style.visibility = "visible";
+      document.querySelector(".parkDetail").style.visibility = "visible";
     } else if (
-      document.querySelector(".previewDetails").style.visibility === "visible"
+      document.querySelector(".parkDetail").style.visibility === "visible"
     ) {
-      document.querySelector(".previewDetails").style.visibility = "hidden";
+      document.querySelector(".parkDetail").style.visibility = "hidden";
     }
     {
     }
   });
 
+document
+  .getElementsByClassName("tripPreview")[0]
+  .addEventListener("click", function (event) {
+    if (
+      event.target.className === "eatDetailsBtn" &&
+      document.querySelector(".eatDetail").style.visibility === "hidden"
+    ) {
+      document.querySelector(".eatDetail").style.visibility = "visible";
+    } else if (
+      document.querySelector(".eatDetail").style.visibility === "visible"
+    ) {
+      document.querySelector(".eatDetail").style.visibility = "hidden";
+    }
+    {
+    }
+  });
+
+document
+  .getElementsByClassName("tripPreview")[0]
+  .addEventListener("click", function (event) {
+    if (
+      event.target.className === "bizDetailsBtn" &&
+      document.querySelector(".bizDetail").style.visibility === "hidden"
+    ) {
+      document.querySelector(".bizDetail").style.visibility = "visible";
+    } else if (
+      document.querySelector(".bizDetail").style.visibility === "visible"
+    ) {
+      document.querySelector(".bizDetail").style.visibility = "hidden";
+    }
+    {
+    }
+  });
+
+const ShowBizDetails = (event, data) => {
+  let bizDesc = data[event.target.selectedIndex].description;
+  document.querySelector(".bizDetail").innerHTML += BizDetailsCard(bizDesc);
+  document.querySelector(".bizDetail").style.visibility = "hidden";
+};
+
+const ShowEateryDetails = (event, data) => {
+  let eateryDesc = data[event.target.selectedIndex].description;
+  document.querySelector(".eatDetail").innerHTML +=
+    EateryDetailsCard(eateryDesc);
+  document.querySelector(".eatDetail").style.visibility = "hidden";
+};
+
 const ShowParkDetails = (event, data) => {
-  let parkDesc = event.target.options[event.target.selectedIndex].description;
-  let parkTest = data[event.target.selectedIndex - 1].description;
-  document.querySelector(".previewDetails").innerHTML += ParkDetailsCard(
-    parkDesc,
-    parkTest
+  let parkImage = data[event.target.selectedIndex - 1].images[0].url;
+  let parkDesc = data[event.target.selectedIndex - 1].description;
+  document.querySelector(".parkDetail").innerHTML += ParkDetailsCard(
+    parkImage,
+    parkDesc
   );
-  document.querySelector(".previewDetails").style.visibility = "hidden";
+  document.querySelector(".parkDetail").style.visibility = "hidden";
 };
 
 const ShowBizPreview = (event, data) => {
   let parkName = event.target.options[event.target.selectedIndex].text;
   let parkImage = data[event.target.selectedIndex].description;
-  document.querySelector(".previewCards").innerHTML += BizPreviewCard(
+  document.querySelector(".bizCard").innerHTML += BizPreviewCard(
     parkName,
     parkImage
   );
@@ -105,7 +155,7 @@ const ShowBizPreview = (event, data) => {
 const ShowEateryPreview = (event, data) => {
   let parkName = event.target.options[event.target.selectedIndex].text;
   let parkImage = data[event.target.selectedIndex].description;
-  document.querySelector(".previewCards").innerHTML += EateryPreviewCard(
+  document.querySelector(".eatCard").innerHTML += EateryPreviewCard(
     parkName,
     parkImage
   );
@@ -116,7 +166,7 @@ const ShowParkPreview = (event, data) => {
   let parkZipCode =
     data[event.target.selectedIndex - 1].addresses[0].postalCode;
   let parkImage = data[event.target.selectedIndex - 1].images[0].url;
-  document.querySelector(".previewCards").innerHTML += ParkPreviewCard(
+  document.querySelector(".parkCard").innerHTML += ParkPreviewCard(
     parkName,
     parkImage
   );
