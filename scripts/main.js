@@ -11,6 +11,7 @@ import {
   ParkPreviewCard,
   BizPreviewCard,
   EateryPreviewCard,
+  ParkDetailsCard,
 } from "./TripPreviewCards.js";
 import { callApi } from "./weather/weatherDisplay.js";
 
@@ -26,7 +27,7 @@ let bizData = null;
 let eateryData = null;
 
 applicationElement.addEventListener("click", (event) => {
-  parkElement.innerHTML = "<h2>select a park bizzarrie and eatery</h2>";
+  parkElement.innerHTML = "<h2>select a park, 'bizarrarie', and eatery</h2>";
   if (event.target.id.length === 2) {
     getParks(event.target.id).then((park) => {
       parkElement.innerHTML += ParkSelectorCard(park.data);
@@ -54,6 +55,7 @@ document
       if (event.target.selectedIndex > 0) {
         if (event.target.id === "parkDropdown") {
           ShowParkPreview(event, parkData);
+          ShowParkDetails(event, parkData);
         } else if (event.target.id === "bizDropdown") {
           ShowBizPreview(event, bizData);
         } else if (event.target.id === "eateryDropdown") {
@@ -63,11 +65,32 @@ document
     }
   });
 
-// const ShowParkDetails = (event, data) => {
-//   let parkDesc = event.target.options[event.target.selectedIndex].description;
-//   document.querySelector(".previewDetails").innerHTML +=
-//     ParkDetailsCard(parkDesc);
-// };
+document
+  .getElementsByClassName("tripPreview")[0]
+  .addEventListener("click", function (event) {
+    if (
+      event.target.id === "detailsBtn" &&
+      document.querySelector(".previewDetails").style.visibility === "hidden"
+    ) {
+      document.querySelector(".previewDetails").style.visibility = "visible";
+    } else if (
+      document.querySelector(".previewDetails").style.visibility === "visible"
+    ) {
+      document.querySelector(".previewDetails").style.visibility = "hidden";
+    }
+    {
+    }
+  });
+
+const ShowParkDetails = (event, data) => {
+  let parkDesc = event.target.options[event.target.selectedIndex].description;
+  let parkTest = data[event.target.selectedIndex - 1].description;
+  document.querySelector(".previewDetails").innerHTML += ParkDetailsCard(
+    parkDesc,
+    parkTest
+  );
+  document.querySelector(".previewDetails").style.visibility = "hidden";
+};
 
 const ShowBizPreview = (event, data) => {
   let parkName = event.target.options[event.target.selectedIndex].text;

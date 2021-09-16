@@ -5,16 +5,14 @@ export const ParkPreviewCard = (parkName, image) => {
         <img src="${image}" alt="parkImage" />
         <section class="modifyButtons">
             <button id="editBtn_${parkName}">Edit</button>
-            <button id="detailsBtn_${parkName}">Details</button>
+            <button id="detailsBtn">Details</button>
         </section>
     </section>`;
 };
 
-export const ParkDetailsCard = (parkDesc) => {
+export const ParkDetailsCard = (parkDesc, parkTest) => {
   return `
-    <section class="parkDetails">
-        <p>${parkDesc}</p>
-    </section>`;
+    <div class="park_detail">${parkTest}</div>`;
 };
 
 export const BizPreviewCard = (bizName, desc) => {
