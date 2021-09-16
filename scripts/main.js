@@ -13,12 +13,16 @@ import {
   EateryPreviewCard,
 } from "./TripPreviewCards.js";
 import { callApi } from "./weather/weatherDisplay.js";
+import { EateryWheelSelectorCard } from "./SelectorCards.js";
+import { wheelchairFilter } from "./SelectorCards.js";
 
 // ===============================================================================
 
 const parkElement = document.querySelector(".tripSelection");
 const applicationElement = document.querySelector(".mapSection");
-
+const wheel = document.querySelector('.filterWheel')
+const eateriesWheel = document.querySelector('.eateriesWheel')
+wheel.innerHTML = wheelchairFilter()
 // =============================event listeners===================================
 
 let parkData = null;
@@ -36,10 +40,34 @@ applicationElement.addEventListener("click", (event) => {
       parkElement.innerHTML += EaterySelectorCard(eatery);
       eateryData = eatery;
     });
+    getEateries(event.target.id).then(eateryArrayWheel =>
+      {
+        document.querySelector('input[name=checkbox]').addEventListener('change',e => 
+        {
+          e.preventDefault()
+          if(e.target.checked)
+          {
+            console.log('checked')
+            eateriesWheel.innerHTML +=EateryWheelSelectorCard(eateryArrayWheel)
+        eateryData = eateryArrayWheel
+          }
+          else if(e.target.checked ==false)
+          {
+            console.log("unchecked")
+            eateriesWheel.textContent = '' 
+          }
+        }
+        )
+        
+      }
+      )
+
+
     getAttractions(event.target.id).then((attractions) => {
       parkElement.innerHTML += BizSelectorCard(attractions);
       bizData = attractions;
     });
+   
   }
 });
 
