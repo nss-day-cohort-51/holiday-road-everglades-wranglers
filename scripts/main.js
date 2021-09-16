@@ -76,7 +76,6 @@ document.getElementById("saveTrip").addEventListener('click', function(event) {
     let bizzarriesArray = []
     let previewSection = document.getElementsByClassName("previewCards")[0]
     for (let childSection of previewSection.childNodes) {
-      console.log(childSection.childNodes)
       if (childSection.className == "eateryPreview") {
         let eateryName = childSection.childNodes[1].innerHTML
         let eateryDescription = childSection.childNodes[3].innerHTML
@@ -99,12 +98,12 @@ document.getElementById("saveTrip").addEventListener('click', function(event) {
           description: bizDescription
         })
       }
-      addTrip({
-        parks: [
-          JSON.stringify(parksArray)
-        ]
-      })
     }
+    addTrip({
+        parksArray,
+        bizzarriesArray,
+        eateriesArray
+    })
   }
 })
 
