@@ -14,15 +14,16 @@ import {
   ParkDetailsCard,
   EateryDetailsCard,
   BizDetailsCard,
+  TripPreviewCard,
 } from "./TripPreviewCards.js";
 import { callApi } from "./weather/weatherDisplay.js";
+import { addTrip, getTrips } from "./apiDataManager.js";
 
-// ===============================================================================
+//#region event listeners
 
 const parkElement = document.querySelector(".tripSelection");
 const applicationElement = document.querySelector(".mapSection");
-
-// =============================event listeners===================================
+document.getElementById("saveTrip").disabled = true;
 
 let parkData = null;
 let bizData = null;
@@ -48,7 +49,7 @@ applicationElement.addEventListener("click", (event) => {
 
 document
   .getElementsByClassName("tripSelection")[0]
-  .addEventListener("click", function (event) {
+  .addEventListener("change", function (event) {
     if (
       event.target &&
       event.target.className === "dropdown" &&
@@ -66,6 +67,7 @@ document
           ShowEateryDetails(event, eateryData);
         }
       }
+      checkSave();
     }
   });
 
@@ -173,7 +175,74 @@ const ShowParkPreview = (event, data) => {
   callApi(parkZipCode);
 };
 
-// ===========================map function========================================
+document.getElementById("saveTrip").addEventListener("click", function (event) {
+  if (event.target.disabled === false) {
+    let parksArray = [];
+    let eateriesArray = [];
+    let bizzarriesArray = [];
+    let previewSection = document.getElementsByClassName("previewCards")[0];
+    for (let childSection of previewSection.childNodes) {
+      if (childSection.className == "eateryPreview") {
+        let eateryName = childSection.childNodes[1].innerHTML;
+        let eateryDescription = childSection.childNodes[3].innerHTML;
+        eateriesArray.push({
+          name: eateryName,
+          description: eateryDescription,
+        });
+      } else if (childSection.className == "parkPreview") {
+        let parkName = childSection.childNodes[1].innerHTML;
+        let parkImage = childSection.childNodes[3].src;
+        parksArray.push({
+          name: parkName,
+          image: parkImage,
+        });
+      } else if (childSection.className == "bizPreview") {
+        let bizName = childSection.childNodes[1].innerHTML;
+        let bizDescription = childSection.childNodes[3].innerHTML;
+        bizzarriesArray.push({
+          name: bizName,
+          description: bizDescription,
+        });
+      }
+    }
+    addTrip({
+      parksArray,
+      bizzarriesArray,
+      eateriesArray,
+    });
+    displayTrips();
+  }
+});
+
+const displayTrips = () => {
+  let container = document.getElementsByClassName("myTripsCards")[0];
+  container.innerHTML = "";
+  getTrips().then((trips) => {
+    for (let i = 0; i < trips.length; i++) {
+      console.log(trips[i].bizzarriesArray);
+      container.innerHTML += TripPreviewCard(
+        trips[i].parksArray,
+        trips[i].bizzarriesArray,
+        trips[i].eateriesArray,
+        i + 1
+      );
+    }
+  });
+};
+displayTrips();
+const checkSave = () => {
+  if (
+    document.querySelectorAll(".parkPreview").length > 0 &&
+    document.querySelectorAll(".bizPreview").length > 0 &&
+    document.querySelectorAll(".eateryPreview").length > 0
+  ) {
+    document.getElementById("saveTrip").disabled = false;
+  }
+};
+
+//#endregion
+
+//#region mapfunction
 
 applicationElement.innerHTML = USMap();
 
@@ -198,4 +267,4 @@ $(document)
   })
   .mouseover();
 
-// =========================================================================
+//#endregion

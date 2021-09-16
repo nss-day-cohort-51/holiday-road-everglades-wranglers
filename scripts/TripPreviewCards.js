@@ -46,3 +46,25 @@ export const EateryDetailsCard = (eateryDesc) => {
   return `
     <div class="eatery_description">${eateryDesc}</div>`;
 };
+export const TripPreviewCard = (
+  parksArray,
+  bizzarriesArray,
+  eateriesArray,
+  tripNum
+) => {
+  let output = `<section class="trip"><h2>Trip ${tripNum}</h2><section class="parks"><h4>Parks:</h4><ul>`;
+  for (let park of parksArray) {
+    output += `<li>${park.name}</li>`;
+  }
+  output +=
+    '</ul></section><section class="bizzarries"><h4>Bizzarries:</h4><ul>';
+  for (let bizzarrie of bizzarriesArray) {
+    output += `<li>${bizzarrie.name}</li>`;
+  }
+  output += '</ul></section><section class="bizzarries"><h4>Eateries:</h4><ul>';
+  for (let eatery of eateriesArray) {
+    output += `<li>${eatery.name}</li>`;
+  }
+  output += "</ul></section></section>";
+  return output;
+};
