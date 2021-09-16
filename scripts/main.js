@@ -22,6 +22,7 @@ let parkData = null;
 let bizData = null;
 let eateryData = null;
 
+
 applicationElement.addEventListener("click", (event) => {
   parkElement.innerHTML = "<h2>select a park bizzarrie and eatery</h2>";
   if (event.target.id.length === 2) {
@@ -41,7 +42,7 @@ applicationElement.addEventListener("click", (event) => {
           if(e.target.checked)
           {
             console.log('checked')
-            eateriesWheel.innerHTML +=EateryWheelSelectorCard(eateryArrayWheel)
+            parkElement.innerHTML +=EateryWheelSelectorCard(eateryArrayWheel)
         eateryData = eateryArrayWheel
           }
           else if(e.target.checked ==false)
@@ -108,9 +109,10 @@ const ShowEateryPreview = (event, data) => {
 
 const ShowParkPreview = (event, data) => {
   let parkName = event.target.options[event.target.selectedIndex].text
+   let parkZipCode = data[event.target.selectedIndex - 1].addresses[0].postalCode;
   let parkImage = data[event.target.selectedIndex - 1].images[0].url
   document.querySelector(".previewCards").innerHTML += ParkPreviewCard(parkName, parkImage)
-  callApi();
+  callApi(parkZipCode);
 }
 
 document.getElementById("saveTrip").addEventListener('click', function(event) {
