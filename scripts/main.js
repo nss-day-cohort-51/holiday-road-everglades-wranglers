@@ -12,14 +12,11 @@ import { wheelchairFilter } from "./SelectorCards.js";
 
 const parkElement = document.querySelector(".tripSelection");
 const applicationElement = document.querySelector(".mapSection");
-<<<<<<< HEAD
 const wheel = document.querySelector('.filterWheel')
 const eateriesWheel = document.querySelector('.eateriesWheel')
 wheel.innerHTML = wheelchairFilter()
 // =============================event listeners===================================
-=======
 document.getElementById("saveTrip").disabled = true
->>>>>>> ae00f185f99f04b79ed5b6295e2743eb604f4b25
 
 let parkData = null;
 let bizData = null;
