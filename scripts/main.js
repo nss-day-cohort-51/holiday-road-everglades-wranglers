@@ -3,10 +3,14 @@ import { getParks } from "./parks/ParkDataManager.js";
 import { ParkSelectorCard,EaterySelectorCard,BizSelectorCard} from "./SelectorCards.js";
 import { getEateries } from "./eateries/EateryDataManager.js";
 import { getAttractions } from "./attractions/AttractionDataManager.js";
-import {ParkPreviewCard,BizPreviewCard,EateryPreviewCard} from "./TripPreviewCards.js";
+import {ParkPreviewCard,BizPreviewCard,EateryPreviewCard,TripPreviewCard} from "./TripPreviewCards.js";
 import { callApi } from "./weather/weatherDisplay.js";
+<<<<<<< HEAD
 import { EateryWheelSelectorCard } from "./SelectorCards.js";
 import { wheelchairFilter } from "./SelectorCards.js";
+=======
+import { addTrip, getTrips } from "./apiDataManager.js";
+>>>>>>> af1c807ef9f58596c0726cae9a18c1a3d71b8bf5
 
 //#region event listeners
 
@@ -67,9 +71,7 @@ applicationElement.addEventListener("click", (event) => {
   }
 });
 
-document
-  .getElementsByClassName("tripSelection")[0]
-  .addEventListener("click", function (event) {
+document.getElementsByClassName("tripSelection")[0].addEventListener("change", function (event) {
     if (
       event.target &&
       event.target.className === "dropdown" &&
@@ -87,12 +89,6 @@ document
       checkSave();
     }
   });
-
-// const ShowParkDetails = (event, data) => {
-//   let parkDesc = event.target.options[event.target.selectedIndex].description;
-//   document.querySelector(".previewDetails").innerHTML +=
-//     ParkDetailsCard(parkDesc);
-// };
 
 const ShowBizPreview = (event, data) => {
   let parkName = event.target.options[event.target.selectedIndex].text
@@ -151,9 +147,21 @@ document.getElementById("saveTrip").addEventListener('click', function(event) {
         bizzarriesArray,
         eateriesArray
     })
+    displayTrips()
   }
 })
 
+const displayTrips = () => {
+  let container = document.getElementsByClassName("myTripsCards")[0]
+  container.innerHTML = ""
+  getTrips().then(trips => {
+    for (let i = 0; i < trips.length; i++) {
+      console.log(trips[i].bizzarriesArray)
+      container.innerHTML += TripPreviewCard(trips[i].parksArray, trips[i].bizzarriesArray, trips[i].eateriesArray, i + 1)
+    }
+  })
+}
+displayTrips()
 const checkSave = () => {
   if (document.querySelectorAll('.parkPreview').length > 0 && document.querySelectorAll('.bizPreview').length > 0 && document.querySelectorAll('.eateryPreview').length > 0) {
     document.getElementById("saveTrip").disabled = false
