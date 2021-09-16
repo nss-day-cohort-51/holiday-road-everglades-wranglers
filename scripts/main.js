@@ -19,6 +19,7 @@ import { callApi } from "./weather/weatherDisplay.js";
 
 const parkElement = document.querySelector(".tripSelection");
 const applicationElement = document.querySelector(".mapSection");
+const previewElement = document.querySelector(".tripPreview");
 
 // =============================event listeners===================================
 
@@ -69,7 +70,7 @@ document
   .getElementsByClassName("tripPreview")[0]
   .addEventListener("click", function (event) {
     if (
-      event.target.id === "detailsBtn" &&
+      event.target.className === "parkDetailsBtn" &&
       document.querySelector(".previewDetails").style.visibility === "hidden"
     ) {
       document.querySelector(".previewDetails").style.visibility = "visible";

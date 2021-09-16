@@ -4,8 +4,7 @@ export const ParkPreviewCard = (parkName, image) => {
         <h3>${parkName}</h3>
         <img src="${image}" alt="parkImage" />
         <section class="modifyButtons">
-            <button id="editBtn_${parkName}">Edit</button>
-            <button id="detailsBtn">Details</button>
+            <button class = "parkDetailsBtn" id="detailsBtn_${parkName}">Details</button>
         </section>
     </section>`;
 };
@@ -21,7 +20,6 @@ export const BizPreviewCard = (bizName, desc) => {
         <h3>${bizName}</h3>
         <p>${desc}</p>
         <section class="modifyButtons">
-            <button id="editBtn_${bizName}">Edit</button>
             <button id="detailsBtn_${bizName}">Details</button>
         </section>
     </section>`;
@@ -33,7 +31,6 @@ export const EateryPreviewCard = (eateryName, desc) => {
         <h3>${eateryName}</h3>
         <p>${desc}</p>
         <section class="modifyButtons">
-            <button id="editBtn_${eateryName}">Edit</button>
             <button id="detailsBtn_${eateryName}">Details</button>
         </section>
     </section>`;
