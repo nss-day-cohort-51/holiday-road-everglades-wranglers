@@ -5,6 +5,7 @@ import { getEateries } from "./eateries/EateryDataManager.js";
 import { getAttractions } from "./attractions/AttractionDataManager.js";
 import {ParkPreviewCard,BizPreviewCard,EateryPreviewCard} from "./TripPreviewCards.js";
 import { callApi } from "./weather/weatherDisplay.js";
+import { addTrip } from "./apiDataManager.js"
 
 //#region event listeners
 
@@ -36,7 +37,7 @@ applicationElement.addEventListener("click", (event) => {
 
 document
   .getElementsByClassName("tripSelection")[0]
-  .addEventListener("click", function (event) {
+  .addEventListener("change", function (event) {
     if (
       event.target &&
       event.target.className === "dropdown" &&
@@ -77,11 +78,16 @@ const ShowEateryPreview = (event, data) => {
 };
 
 const ShowParkPreview = (event, data) => {
-  let parkName = event.target.options[event.target.selectedIndex].text
-  let parkImage = data[event.target.selectedIndex - 1].images[0].url
-  document.querySelector(".previewCards").innerHTML += ParkPreviewCard(parkName, parkImage)
-  callApi();
-}
+  let parkName = event.target.options[event.target.selectedIndex].text;
+  let parkZipCode =
+    data[event.target.selectedIndex - 1].addresses[0].postalCode;
+  let parkImage = data[event.target.selectedIndex - 1].images[0].url;
+  document.querySelector(".previewCards").innerHTML += ParkPreviewCard(
+    parkName,
+    parkImage
+  );
+  callApi(parkZipCode);
+};
 
 document.getElementById("saveTrip").addEventListener('click', function(event) {
   if (event.target.disabled === false) {
