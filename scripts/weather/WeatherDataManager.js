@@ -1,12 +1,9 @@
-import { weatherApi } from "../apiKeys/apiKey.js"
 
-const url = "http://api.openweathermap.org/data/2.5/forecast?appid="+weatherApi+"&q=nashville&units=imperial";
-
-export const getWeather = () =>
+export const getWeather = (zip) =>
 
 {
 
-    return fetch(url)
+    return fetch(`http://api.openweathermap.org/data/2.5/forecast?appid=f978b8bd1b4bf05ce67d577615e8a6a0&zip=${zip}&units=imperial`)
     .then(response => response.json())
     
 }

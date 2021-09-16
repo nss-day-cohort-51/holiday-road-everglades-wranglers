@@ -14,6 +14,10 @@ textarea {
   line-height: 1.5;
 }
 
+header {
+  order: 1;
+}
+
 .header_wrapper {
   display: flex;
   flex-direction: row;
@@ -26,14 +30,22 @@ h1 {
   font-size: 4vw;
 }
 
+h2 {
+  text-align: center;
+}
+
 .HR_Logo {
   width: 30vw;
+}
+
+.allTrips {
+  display: flex;
+  flex-direction: column;
 }
 
 /* ---------------------map styling-------------------------- */
 
 #us-map {
-  margin-top: 5vw;
   width: 60vw;
   height: auto;
 }
@@ -76,6 +88,8 @@ path {
 }
 
 .map_wrapper {
+  order: 2;
+  margin-top: 6vw;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -84,11 +98,20 @@ path {
 
 .state_select_h2 {
   text-align: center;
+  font-size: 3vw;
 }
 /* ====================================================== */
 
 #parkDropdown {
   width: 20vw;
+}
+
+.tripSelection {
+  order: 3;
+}
+
+.weather {
+  order: 4;
 }
 
 .display {
@@ -106,4 +129,36 @@ path {
 
 .weather-Card h1 {
   color: white;
+}
+
+/* ============================================================== */
+
+.tripPreview {
+  order: 5;
+  display: flex;
+  flex-direction: column;
+}
+
+.parkPreview img {
+  width: 25vw;
+  height: auto;
+}
+
+.previewCards {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+/* ================================================================== */
+
+.myTrips {
+  order: 6;
+}
+
+/* =================================================================== */
+
+footer {
+  text-align: center;
+  order: 7;
 }
