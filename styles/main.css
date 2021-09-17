@@ -9,6 +9,11 @@ body {
   font-family: "Comfortaa", Arial, sans-serif;
   font-size: 14px;
   line-height: 1.5;
+  width: 100%;
+}
+
+main {
+  width: 100%;
 }
 
 button,
@@ -23,6 +28,8 @@ textarea {
 
 header {
   order: 1;
+  width: 100%;
+  margin-top: -1vw;
 }
 
 .header_wrapper {

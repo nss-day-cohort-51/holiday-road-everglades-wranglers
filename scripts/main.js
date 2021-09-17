@@ -148,7 +148,7 @@ const ShowParkDetails = (event, data) => {
 const ShowBizPreview = (event, data) => {
   let parkName = event.target.options[event.target.selectedIndex].text;
   let parkImage = data[event.target.selectedIndex].description;
-  document.querySelector(".bizCard").innerHTML += BizPreviewCard(
+  document.querySelector(".previewCards").innerHTML += BizPreviewCard(
     parkName,
     parkImage
   );
@@ -157,7 +157,7 @@ const ShowBizPreview = (event, data) => {
 const ShowEateryPreview = (event, data) => {
   let parkName = event.target.options[event.target.selectedIndex].text;
   let parkImage = data[event.target.selectedIndex].description;
-  document.querySelector(".eatCard").innerHTML += EateryPreviewCard(
+  document.querySelector(".previewCards").innerHTML += EateryPreviewCard(
     parkName,
     parkImage
   );
@@ -168,7 +168,7 @@ const ShowParkPreview = (event, data) => {
   let parkZipCode =
     data[event.target.selectedIndex - 1].addresses[0].postalCode;
   let parkImage = data[event.target.selectedIndex - 1].images[0].url;
-  document.querySelector(".parkCard").innerHTML += ParkPreviewCard(
+  document.querySelector(".previewCards").innerHTML += ParkPreviewCard(
     parkName,
     parkImage
   );
