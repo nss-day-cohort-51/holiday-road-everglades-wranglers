@@ -24,7 +24,11 @@ import { addTrip, getTrips } from "./apiDataManager.js";
 //#region event listeners
 
 const parkElement = document.querySelector(".tripSelection");
+const titleElement = document.querySelector(".tripselectTitle");
+const tripElement = document.querySelector(".tripPreviewSelectTitle");
 const applicationElement = document.querySelector(".mapSection");
+const displayName = document.querySelector(".displayName");
+
 const wheel = document.querySelector(".filterWheel");
 const eateriesWheel = document.querySelector(".eateriesWheel");
 wheel.innerHTML = wheelchairFilter();
@@ -36,7 +40,11 @@ let bizData = null;
 let eateryData = null;
 
 applicationElement.addEventListener("click", (event) => {
-  parkElement.innerHTML = "<h2>select a park, 'bizarrarie', and eatery</h2>";
+  parkElement.innerHTML = "";
+  titleElement.innerHTML = "<h2>select a park, 'bizarrarie', and eatery</h2>";
+  tripElement.innerHTML = "<h2>Trip Preview</h2>";
+  displayName.innerHTML = "<h2>Weather at Selected State Park</h2>";
+
   if (event.target.id.length === 2) {
     getParks(event.target.id).then((park) => {
       parkElement.innerHTML += ParkSelectorCard(park.data);
