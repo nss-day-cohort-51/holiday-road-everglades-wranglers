@@ -3,7 +3,19 @@
 
 /*Typography
 --------------------------------------------------------------*/
-body,
+body {
+  background-color: #49701f;
+  color: #002868;
+  font-family: "Comfortaa", Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  width: 100%;
+}
+
+main {
+  width: 100%;
+}
+
 button,
 input,
 select,
@@ -17,25 +29,23 @@ textarea {
 header {
   order: 1;
   width: 100%;
+  margin-top: -1vw;
 }
-body{
-  background-color: #49701f;
-  width: 100%;
-}
+
 .header_wrapper {
+  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
   border-bottom: solid 5px white;
-  width: 100%; 
-  }
+  width: 100%;
+}
 
 h1 {
   font-family: "Courgette", cursive;
   font-size: 4vw;
-  margin-bottom: -.2vw;
+  margin-bottom: -0.2vw;
 }
-
 
 h2 {
   text-align: center;
@@ -80,7 +90,7 @@ path {
 
 #path67 {
   fill: none !important;
-  stroke:white !important;
+  stroke: white !important;
   cursor: default;
 }
 #info-box {
@@ -98,7 +108,7 @@ path {
 
 .map_wrapper {
   order: 2;
- 
+
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -121,11 +131,11 @@ select {
   margin: 1vw;
   font-family: inherit;
   line-height: inherit;
-  border-radius:20px;
- flex-wrap: wrap;
-  background:#cccccc;
-  border:0px;
-  outline:none;
+  border-radius: 20px;
+  flex-wrap: wrap;
+  background: #cccccc;
+  border: 0px;
+  outline: none;
   width: fit-content;
   height: fit-content;
   color: #49701f;
@@ -144,8 +154,6 @@ select {
   flex-direction: row-reverse;
   align-items: center;
   justify-content: space-evenly;
-
-
 }
 
 .tripSelection {
@@ -165,41 +173,123 @@ select {
 }
 
 .weather-Card {
- margin: 10px;
+  margin: 10px;
 }
 
 .weather-Card h1 {
-  color: #002868
+  color: #002868;
 }
 
 /* ============================================================== */
 
 .tripPreview {
   order: 5;
+  border-top: 2px solid #173a00;
   display: flex;
   flex-direction: column;
 }
 
-.parkPreview img {
-  width: 25vw;
+.tripWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.parkPreview {
+  width: 30vw;
+  float: left;
+}
+
+.parkDetail {
+  width: 30vw;
+  float: left;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px 5px;
+}
+
+.park_description {
+  font-size: 1vw;
+  color: white;
+  margin-top: 0.5vw;
+  margin-bottom: 3vw;
+  margin-left: 10px;
+}
+
+.park_image {
+  width: 20vw;
   height: auto;
+}
+
+.bizPreview {
+  width: 30vw;
+  float: center;
+}
+.bizDetail {
+  width: 30vw;
+  float: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px 5px;
+}
+
+.biz_description {
+  font-size: 1.25vw;
+  color: white;
+  margin-top: 0.5vw;
+  margin-bottom: 3vw;
+  margin-left: 10px;
+}
+
+.eateryPreview {
+  width: 30vw;
+  float: right;
+}
+.eatDetail {
+  width: 30vw;
+  float: right;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px 5px;
+}
+
+.eatery_description {
+  font-size: 1.25vw;
+  height: 15vw;
+  color: white;
+  margin-top: 0.5vw;
+  margin-bottom: 3vw;
+  margin-left: 10px;
+}
+
+.previewDetails {
+  order: 6;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  height: 20vw;
 }
 
 .previewCards {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  text-align: center;
+  color: white;
+  margin-bottom: 2vw;
 }
 
 /* ================================================================== */
 
 .myTrips {
-  order: 6;
+  order: 7;
 }
 
 /* =================================================================== */
 
 footer {
   text-align: center;
-  order: 7;
+  order: 8;
 }
