@@ -8,7 +8,7 @@ button,
 input,
 select,
 textarea {
-  color: #002868;
+  color: #ffffff;
   font-family: "Comfortaa", Arial, sans-serif;
   font-size: 14px;
   line-height: 1.5;
@@ -16,26 +16,35 @@ textarea {
 
 header {
   order: 1;
+  width: 100%;
 }
-
+body{
+  background-color: #49701f;
+  width: 100%;
+}
 .header_wrapper {
   display: flex;
   flex-direction: row;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.5);
-}
+  border-bottom: solid 5px white;
+  width: 100%; 
+  }
 
 h1 {
   font-family: "Courgette", cursive;
   font-size: 4vw;
+  margin-bottom: -.2vw;
 }
+
 
 h2 {
   text-align: center;
 }
 
 .HR_Logo {
-  width: 30vw;
+  width: 15vw;
+  margin-right: 12vw;
+  margin-bottom: -3vw;
 }
 
 .allTrips {
@@ -60,7 +69,7 @@ circle:hover {
 
 path {
   cursor: pointer;
-  fill: grey;
+  fill: white;
 }
 .selected {
   fill: #002868;
@@ -71,7 +80,7 @@ path {
 
 #path67 {
   fill: none !important;
-  stroke: #a9a9a9 !important;
+  stroke:white !important;
   cursor: default;
 }
 #info-box {
@@ -80,7 +89,7 @@ path {
   top: 0px;
   left: 0px;
   z-index: 1;
-  background-color: #ffffff;
+  background-color: #002868;
   border: 2px solid #bf0a30;
   border-radius: 5px;
   padding: 5px;
@@ -89,38 +98,48 @@ path {
 
 .map_wrapper {
   order: 2;
-  margin-top: 6vw;
+ 
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: center;
   align-items: center;
   text-align: center;
+  margin-bottom: 3vw;
+  margin-top: 3vw;
 }
 
 .state_select_h2 {
   text-align: center;
-  font-size: 3vw;
+  font-size: 2vw;
+  margin-left: -10vw;
 }
 /* ====================================================== */
 
 select {
   appearance: none;
   text-align: center;
-  margin: 0;
+  margin: 1vw;
   font-family: inherit;
-  font-size: 15px;
   line-height: inherit;
   border-radius:20px;
  flex-wrap: wrap;
   background:#cccccc;
   border:0px;
   outline:none;
-  width: 30ch;
+  width: fit-content;
+  height: fit-content;
+  color: #49701f;
+}
+.tripselectTitle {
+  border-top: white 5px solid;
 }
 
-
+.weather {
+  margin-top: 2vw;
+}
 
 .tripSelection {
-  padding-top: 75px;
+  padding-top: 3vw;
   display: flex;
   flex-direction: row-reverse;
   align-items: center;
@@ -146,12 +165,11 @@ select {
 }
 
 .weather-Card {
-  background: #e6aa8e;
-  margin: 10px;
+ margin: 10px;
 }
 
 .weather-Card h1 {
-  color: white;
+  color: #002868
 }
 
 /* ============================================================== */
