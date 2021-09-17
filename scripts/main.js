@@ -8,10 +8,16 @@ import { callApi } from "./weather/weatherDisplay.js";
 import { EateryWheelSelectorCard } from "./SelectorCards.js";
 import { wheelchairFilter } from "./SelectorCards.js";
 import { addTrip, getTrips } from "./apiDataManager.js";
+
 //#region event listeners
 
 const parkElement = document.querySelector(".tripSelection");
+const titleElement = document.querySelector(".tripselectTitle")
+const tripElement = document.querySelector(".tripPreviewSelectTitle")
 const applicationElement = document.querySelector(".mapSection");
+const displayName = document.querySelector(".displayName")
+
+
 const wheel = document.querySelector('.filterWheel')
 const eateriesWheel = document.querySelector('.eateriesWheel')
 wheel.innerHTML = wheelchairFilter()
@@ -24,7 +30,12 @@ let eateryData = null;
 
 
 applicationElement.addEventListener("click", (event) => {
-  parkElement.innerHTML = "<h2>select a park bizzarrie and eatery</h2>";
+  parkElement.innerHTML = "";
+  titleElement.innerHTML = "<h2>select a park bizzarrie and eatery</h2>";
+  tripElement.innerHTML = "<h2>Trip Preview</h2>";
+  displayName.innerHTML = "<h2>Weather at Selected State Park</h2>"
+ 
+
   if (event.target.id.length === 2) {
     getParks(event.target.id).then((park) => {
       parkElement.innerHTML += ParkSelectorCard(park.data);
@@ -65,11 +76,7 @@ applicationElement.addEventListener("click", (event) => {
   }
 });
 
-
-
-
 document.getElementsByClassName("tripSelection")[0].addEventListener("change", function (event) {
-
     if (
       event.target &&
       event.target.className === "dropdown" &&
@@ -110,7 +117,6 @@ const ShowParkPreview = (event, data) => {
   document.querySelector(".previewCards").innerHTML += ParkPreviewCard(parkName, parkImage)
   callApi(parkZipCode);
 }
-
 
 document.getElementById("saveTrip").addEventListener('click', function(event) {
   if (event.target.disabled === false) {
