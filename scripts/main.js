@@ -97,7 +97,7 @@ document
   .getElementsByClassName("tripPreview")[0]
   .addEventListener("click", function (event) {
     if (
-      event.target.className === "parkDetailsBtn" &&
+      event.target.className === "parkDetailBtn" &&
       document.querySelector(".parkDetail").style.visibility === "hidden"
     ) {
       document.querySelector(".parkDetail").style.visibility = "visible";
@@ -114,7 +114,7 @@ document
   .getElementsByClassName("tripPreview")[0]
   .addEventListener("click", function (event) {
     if (
-      event.target.className === "eatDetailsBtn" &&
+      event.target.className === "eatDetailBtn" &&
       document.querySelector(".eatDetail").style.visibility === "hidden"
     ) {
       document.querySelector(".eatDetail").style.visibility = "visible";
@@ -131,7 +131,7 @@ document
   .getElementsByClassName("tripPreview")[0]
   .addEventListener("click", function (event) {
     if (
-      event.target.className === "bizDetailsBtn" &&
+      event.target.className === "bizDetailBtn" &&
       document.querySelector(".bizDetail").style.visibility === "hidden"
     ) {
       document.querySelector(".bizDetail").style.visibility = "visible";

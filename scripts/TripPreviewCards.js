@@ -3,7 +3,7 @@ export const ParkPreviewCard = (parkName, image) => {
     <section class="parkPreview">
         <h3>${parkName}</h3>
         <section class="modifyButtons">
-            <button class="parkDetailsBtn" id="detailsBtn_${parkName}">Details</button>
+            <button class="parkDetailBtn" id="detailsBtn_${parkName}">Details</button>
         </section>
     </section>`;
 };
@@ -16,10 +16,10 @@ export const ParkDetailsCard = (parkImage, parkDesc) => {
 
 export const BizPreviewCard = (bizName, desc) => {
   return `
-    <section class="bizPreview"> 
+    <section class="bizPreview">
         <h3>${bizName}</h3>
         <section class="modifyButtons">
-            <button class="bizDetailsBtn" id="detailsBtn_${bizName}">Details</button>
+            <button class="bizDetailBtn" id="detailsBtn_${bizName}">Details</button>
         </section>
     </section>`;
 };
@@ -34,7 +34,7 @@ export const EateryPreviewCard = (eateryName, desc) => {
     <section class="eateryPreview">
         <h3>${eateryName}</h3>
         <section class="modifyButtons">
-            <button class="eatDetailsBtn" id="detailsBtn_${eateryName}">Details</button>
+            <button class="eatDetailBtn" id="detailsBtn_${eateryName}">Details</button>
         </section>
     </section>`;
 };
