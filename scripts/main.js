@@ -25,16 +25,15 @@ import { addTrip, getTrips } from "./apiDataManager.js";
 
 const parkElement = document.querySelector(".tripSelection");
 const applicationElement = document.querySelector(".mapSection");
-const wheel = document.querySelector('.filterWheel')
-const eateriesWheel = document.querySelector('.eateriesWheel')
-wheel.innerHTML = wheelchairFilter()
+const wheel = document.querySelector(".filterWheel");
+const eateriesWheel = document.querySelector(".eateriesWheel");
+wheel.innerHTML = wheelchairFilter();
 // =============================event listeners===================================
-document.getElementById("saveTrip").disabled = true
+document.getElementById("saveTrip").disabled = true;
 
 let parkData = null;
 let bizData = null;
 let eateryData = null;
-
 
 applicationElement.addEventListener("click", (event) => {
   parkElement.innerHTML = "<h2>select a park, 'bizarrarie', and eatery</h2>";
@@ -47,34 +46,26 @@ applicationElement.addEventListener("click", (event) => {
       parkElement.innerHTML += EaterySelectorCard(eatery);
       eateryData = eatery;
     });
-    getEateries(event.target.id).then(eateryArrayWheel =>
-      {
-        document.querySelector('input[name=checkbox]').addEventListener('change',e => 
-        {
-          e.preventDefault()
-          if(e.target.checked)
-          {
-            console.log('checked')
-            parkElement.innerHTML +=EateryWheelSelectorCard(eateryArrayWheel)
-        eateryData = eateryArrayWheel
+    getEateries(event.target.id).then((eateryArrayWheel) => {
+      document
+        .querySelector("input[name=checkbox]")
+        .addEventListener("change", (e) => {
+          e.preventDefault();
+          if (e.target.checked) {
+            console.log("checked");
+            parkElement.innerHTML += EateryWheelSelectorCard(eateryArrayWheel);
+            eateryData = eateryArrayWheel;
+          } else if (e.target.checked == false) {
+            console.log("unchecked");
+            eateriesWheel.textContent = "";
           }
-          else if(e.target.checked ==false)
-          {
-            console.log("unchecked")
-            eateriesWheel.textContent = '' 
-          }
-        }
-        )
-        
-      }
-      )
-
+        });
+    });
 
     getAttractions(event.target.id).then((attractions) => {
       parkElement.innerHTML += BizSelectorCard(attractions);
       bizData = attractions;
     });
-   
   }
 });
 
@@ -195,12 +186,16 @@ const ShowEateryPreview = (event, data) => {
 };
 
 const ShowParkPreview = (event, data) => {
-  let parkName = event.target.options[event.target.selectedIndex].text
-   let parkZipCode = data[event.target.selectedIndex - 1].addresses[0].postalCode;
-  let parkImage = data[event.target.selectedIndex - 1].images[0].url
-  document.querySelector(".previewCards").innerHTML += ParkPreviewCard(parkName, parkImage)
+  let parkName = event.target.options[event.target.selectedIndex].text;
+  let parkZipCode =
+    data[event.target.selectedIndex - 1].addresses[0].postalCode;
+  let parkImage = data[event.target.selectedIndex - 1].images[0].url;
+  document.querySelector(".previewCards").innerHTML += ParkPreviewCard(
+    parkName,
+    parkImage
+  );
   callApi(parkZipCode);
-}
+};
 
 document.getElementById("saveTrip").addEventListener("click", function (event) {
   if (event.target.disabled === false) {
