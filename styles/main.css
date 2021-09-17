@@ -5,7 +5,7 @@
 --------------------------------------------------------------*/
 body {
   background-color: #49701f;
-  color: #002868;
+  color: white;
   font-family: "Comfortaa", Arial, sans-serif;
   font-size: 14px;
   line-height: 1.5;
@@ -14,6 +14,9 @@ body {
 
 main {
   width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
 
 button,
@@ -30,6 +33,7 @@ header {
   order: 1;
   width: 100%;
   margin-top: -1vw;
+
 }
 
 .header_wrapper {
@@ -116,29 +120,32 @@ path {
   text-align: center;
   margin-bottom: 3vw;
   margin-top: 3vw;
+  
 }
 
 .state_select_h2 {
   text-align: center;
   font-size: 2vw;
   margin-left: -10vw;
+  margin-bottom: 2vw;
 }
 /* ====================================================== */
 
 select {
   appearance: none;
   text-align: center;
-  margin: 1vw;
+  margin: .5vw;
   font-family: inherit;
   line-height: inherit;
-  border-radius: 20px;
-  flex-wrap: wrap;
-  background: #cccccc;
-  border: 0px;
-  outline: none;
-  width: fit-content;
+  border-radius:20px;
+ flex-wrap: wrap;
+  background:#cccccc;
+  border:0px;
+  outline:none;
+  width: 40ch;
   height: fit-content;
   color: #49701f;
+  overflow: auto;
 }
 .tripselectTitle {
   border-top: white 5px solid;
@@ -154,6 +161,11 @@ select {
   flex-direction: row-reverse;
   align-items: center;
   justify-content: space-evenly;
+  width: 1000px;
+  
+  
+
+
 }
 
 .tripSelection {
@@ -192,6 +204,7 @@ select {
 .tripWrapper {
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
 .parkPreview {
@@ -285,6 +298,13 @@ select {
 
 .myTrips {
   order: 7;
+  margin-top: 5vw;
+}
+.myTripsCards{
+  overflow: auto;
+  height: 35vw;
+  width: 15vw;
+
 }
 
 /* =================================================================== */
