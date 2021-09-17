@@ -21,7 +21,16 @@ header {
 body{
   background-color: #49701f;
   width: 100%;
+
 }
+main{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+
+  
+}
+
 .header_wrapper {
   display: flex;
   flex-direction: row;
@@ -106,19 +115,21 @@ path {
   text-align: center;
   margin-bottom: 3vw;
   margin-top: 3vw;
+  
 }
 
 .state_select_h2 {
   text-align: center;
   font-size: 2vw;
   margin-left: -10vw;
+  margin-bottom: 2vw;
 }
 /* ====================================================== */
 
 select {
   appearance: none;
   text-align: center;
-  margin: 1vw;
+  margin: .5vw;
   font-family: inherit;
   line-height: inherit;
   border-radius:20px;
@@ -126,9 +137,10 @@ select {
   background:#cccccc;
   border:0px;
   outline:none;
-  width: fit-content;
+  width: 40ch;
   height: fit-content;
   color: #49701f;
+  overflow: auto;
 }
 .tripselectTitle {
   border-top: white 5px solid;
@@ -144,6 +156,9 @@ select {
   flex-direction: row-reverse;
   align-items: center;
   justify-content: space-evenly;
+  width: 1000px;
+  
+  
 
 
 }
@@ -178,6 +193,7 @@ select {
   order: 5;
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
 .parkPreview img {
@@ -189,12 +205,21 @@ select {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  
 }
 
 /* ================================================================== */
 
 .myTrips {
   order: 6;
+  
+}
+
+.myTripsCards{
+  overflow: auto;
+  height: 35vw;
+  width: 15vw;
+
 }
 
 /* =================================================================== */

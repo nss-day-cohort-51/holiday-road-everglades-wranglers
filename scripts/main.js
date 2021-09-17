@@ -31,7 +31,7 @@ let eateryData = null;
 
 applicationElement.addEventListener("click", (event) => {
   parkElement.innerHTML = "";
-  titleElement.innerHTML = "<h2>select a park bizzarrie and eatery</h2>";
+  titleElement.innerHTML = "<h2>Select a park bizzarrie and eatery</h2>";
   tripElement.innerHTML = "<h2>Trip Preview</h2>";
   displayName.innerHTML = "<h2>Weather at Selected State Park</h2>"
  

@@ -1,6 +1,6 @@
 export const USMap = () => {
   return `<div class="map_wrapper">
-                <h2 class="state_select_h2">select a state</h2>
+                <h2 class="state_select_h2">Select a state</h2>
                 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
                 <div id="info-box"></div>
                 <?xml version="1.0" encoding="utf-8"?>
