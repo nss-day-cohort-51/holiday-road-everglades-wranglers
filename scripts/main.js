@@ -8,7 +8,6 @@ import { callApi } from "./weather/weatherDisplay.js";
 import { EateryWheelSelectorCard } from "./SelectorCards.js";
 import { wheelchairFilter } from "./SelectorCards.js";
 import { addTrip, getTrips } from "./apiDataManager.js";
-
 //#region event listeners
 
 const parkElement = document.querySelector(".tripSelection");
@@ -66,7 +65,11 @@ applicationElement.addEventListener("click", (event) => {
   }
 });
 
+
+
+
 document.getElementsByClassName("tripSelection")[0].addEventListener("change", function (event) {
+
     if (
       event.target &&
       event.target.className === "dropdown" &&
@@ -107,6 +110,7 @@ const ShowParkPreview = (event, data) => {
   document.querySelector(".previewCards").innerHTML += ParkPreviewCard(parkName, parkImage)
   callApi(parkZipCode);
 }
+
 
 document.getElementById("saveTrip").addEventListener('click', function(event) {
   if (event.target.disabled === false) {
