@@ -24,3 +24,20 @@ export const EaterySelectorCard = (eateryArray) => {
   output += `</select></section>`;
   return output;
 };
+
+export const wheelchairFilter = () =>
+{
+  return `<label>Filter Eateries by Wheelchair</labe><input name="checkbox" type ="checkbox" class ="wheelFilter">`
+}
+
+export const EateryWheelSelectorCard = (eateryArrayWheel) => {
+  let output = `<section class="eaterySelector"><select name="eateries" class="dropdown" id="eateryDropdown"><option value="default">Select By available Wheelchair</option>`;
+  for (const eater of eateryArrayWheel) {
+    if(eater.ameneties.wheelchairAccessible == true)
+    {    output += `<option value="${ eater.ameneties.wheelchairAccessible}">${eater.businessName}</option>`;
+  }
+}
+
+  output += `</select></section>`;
+  return output;
+};

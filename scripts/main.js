@@ -3,19 +3,25 @@ import { getParks } from "./parks/ParkDataManager.js";
 import { ParkSelectorCard,EaterySelectorCard,BizSelectorCard} from "./SelectorCards.js";
 import { getEateries } from "./eateries/EateryDataManager.js";
 import { getAttractions } from "./attractions/AttractionDataManager.js";
-import {ParkPreviewCard,BizPreviewCard,EateryPreviewCard} from "./TripPreviewCards.js";
+import {ParkPreviewCard,BizPreviewCard,EateryPreviewCard,TripPreviewCard} from "./TripPreviewCards.js";
 import { callApi } from "./weather/weatherDisplay.js";
-import { addTrip } from "./apiDataManager.js"
-
+import { EateryWheelSelectorCard } from "./SelectorCards.js";
+import { wheelchairFilter } from "./SelectorCards.js";
+import { addTrip, getTrips } from "./apiDataManager.js";
 //#region event listeners
 
 const parkElement = document.querySelector(".tripSelection");
 const applicationElement = document.querySelector(".mapSection");
+const wheel = document.querySelector('.filterWheel')
+const eateriesWheel = document.querySelector('.eateriesWheel')
+wheel.innerHTML = wheelchairFilter()
+// =============================event listeners===================================
 document.getElementById("saveTrip").disabled = true
 
 let parkData = null;
 let bizData = null;
 let eateryData = null;
+
 
 applicationElement.addEventListener("click", (event) => {
   parkElement.innerHTML = "<h2>select a park bizzarrie and eatery</h2>";
@@ -28,16 +34,42 @@ applicationElement.addEventListener("click", (event) => {
       parkElement.innerHTML += EaterySelectorCard(eatery);
       eateryData = eatery;
     });
+    getEateries(event.target.id).then(eateryArrayWheel =>
+      {
+        document.querySelector('input[name=checkbox]').addEventListener('change',e => 
+        {
+          e.preventDefault()
+          if(e.target.checked)
+          {
+            console.log('checked')
+            parkElement.innerHTML +=EateryWheelSelectorCard(eateryArrayWheel)
+        eateryData = eateryArrayWheel
+          }
+          else if(e.target.checked ==false)
+          {
+            console.log("unchecked")
+            eateriesWheel.textContent = '' 
+          }
+        }
+        )
+        
+      }
+      )
+
+
     getAttractions(event.target.id).then((attractions) => {
       parkElement.innerHTML += BizSelectorCard(attractions);
       bizData = attractions;
     });
+   
   }
 });
 
-document
-  .getElementsByClassName("tripSelection")[0]
-  .addEventListener("change", function (event) {
+
+
+
+document.getElementsByClassName("tripSelection")[0].addEventListener("change", function (event) {
+
     if (
       event.target &&
       event.target.className === "dropdown" &&
@@ -56,12 +88,6 @@ document
     }
   });
 
-// const ShowParkDetails = (event, data) => {
-//   let parkDesc = event.target.options[event.target.selectedIndex].description;
-//   document.querySelector(".previewDetails").innerHTML +=
-//     ParkDetailsCard(parkDesc);
-// };
-
 const ShowBizPreview = (event, data) => {
   let parkName = event.target.options[event.target.selectedIndex].text
   let parkImage = data[event.target.selectedIndex].description
@@ -78,16 +104,13 @@ const ShowEateryPreview = (event, data) => {
 };
 
 const ShowParkPreview = (event, data) => {
-  let parkName = event.target.options[event.target.selectedIndex].text;
-  let parkZipCode =
-    data[event.target.selectedIndex - 1].addresses[0].postalCode;
-  let parkImage = data[event.target.selectedIndex - 1].images[0].url;
-  document.querySelector(".previewCards").innerHTML += ParkPreviewCard(
-    parkName,
-    parkImage
-  );
+  let parkName = event.target.options[event.target.selectedIndex].text
+   let parkZipCode = data[event.target.selectedIndex - 1].addresses[0].postalCode;
+  let parkImage = data[event.target.selectedIndex - 1].images[0].url
+  document.querySelector(".previewCards").innerHTML += ParkPreviewCard(parkName, parkImage)
   callApi(parkZipCode);
-};
+}
+
 
 document.getElementById("saveTrip").addEventListener('click', function(event) {
   if (event.target.disabled === false) {
@@ -124,9 +147,21 @@ document.getElementById("saveTrip").addEventListener('click', function(event) {
         bizzarriesArray,
         eateriesArray
     })
+    displayTrips()
   }
 })
 
+const displayTrips = () => {
+  let container = document.getElementsByClassName("myTripsCards")[0]
+  container.innerHTML = ""
+  getTrips().then(trips => {
+    for (let i = 0; i < trips.length; i++) {
+      console.log(trips[i].bizzarriesArray)
+      container.innerHTML += TripPreviewCard(trips[i].parksArray, trips[i].bizzarriesArray, trips[i].eateriesArray, i + 1)
+    }
+  })
+}
+displayTrips()
 const checkSave = () => {
   if (document.querySelectorAll('.parkPreview').length > 0 && document.querySelectorAll('.bizPreview').length > 0 && document.querySelectorAll('.eateryPreview').length > 0) {
     document.getElementById("saveTrip").disabled = false
