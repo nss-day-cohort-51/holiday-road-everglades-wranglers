@@ -5,7 +5,6 @@ import { getEateries } from "./eateries/EateryDataManager.js";
 import { getAttractions } from "./attractions/AttractionDataManager.js";
 import {ParkPreviewCard,BizPreviewCard,EateryPreviewCard,TripPreviewCard} from "./TripPreviewCards.js";
 import { callApi } from "./weather/weatherDisplay.js";
-
 import { EateryWheelSelectorCard } from "./SelectorCards.js";
 import { wheelchairFilter } from "./SelectorCards.js";
 import { addTrip, getTrips } from "./apiDataManager.js";
